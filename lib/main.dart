@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:ca/home_page.dart';
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
@@ -12,6 +11,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
+      title: 'Flutter Camera Demo',
+      debugShowCheckedModeBanner: false,
       home: HomePage(),
     );
   }

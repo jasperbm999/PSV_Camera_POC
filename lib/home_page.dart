@@ -2,26 +2,27 @@ import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:ca/camera_page.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () async {
-            await availableCameras().then(
-                  (value) => Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => CameraPage(cameras: value,),
-                ),
-              ),
-            );
-          },
-          child: const Text('Launch Camera'),
-        ),
+      appBar: AppBar(title: const Text("Home Page")),
+      body: SafeArea(
+        child: Center(
+            child: ElevatedButton(
+              onPressed: () async {
+                await availableCameras().then((value) => Navigator.push(context,
+                    MaterialPageRoute(builder: (_) => CameraPage(cameras: value))));
+              },
+              child: const Text("Take a Picture"),
+            )),
       ),
     );
   }
